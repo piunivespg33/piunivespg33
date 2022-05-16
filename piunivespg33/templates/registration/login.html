@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Login</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+      <h2>Efetuar Login</h2>
+      <p><input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Usuário"></p>
+      <p><input type="password" name="password" autocomplete="current-password" required id="id_password" placeholder="Senha"></p>
+      <button type="submit" class="btn btn-primary" name="button">Login</button>      
+  </form>
+</div>
+{% endblock %}

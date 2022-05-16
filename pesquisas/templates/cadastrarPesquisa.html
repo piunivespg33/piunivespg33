@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block head %}
+    <title>Cadastro de Pesquisa</title>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Carregar arquivo CSV</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input name="myfile" type="file" />
+    <button type="submit" class="btn btn-success">Upload</button>
+  </form>
+</div>
+
+{% endblock %}
