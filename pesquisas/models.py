@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Pesquisa(models.Model):
@@ -71,3 +72,7 @@ class Pesquisa(models.Model):
     hot_paper_status = models.CharField (max_length=100, null=True, blank=True)
     date_of_export = models.DateField( null=True, blank=True)
     unique_wos_id = models.CharField (max_length=100, null=True, blank=True)
+
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+    )
