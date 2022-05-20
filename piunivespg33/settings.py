@@ -28,8 +28,8 @@ SECRET_KEY = '^qn#!_nhf-ohbw=#x*!nuadv50g#3mgvj+e7f1&&0gtu4m85i5'
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['piunivespg33.herokuapp.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['piunivespg33.herokuapp.com']
 
 LOGIN_REDIRECT_URL = '/piunivespg33/'
 
@@ -80,23 +80,23 @@ WSGI_APPLICATION = 'piunivespg33.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pesquisawos',
-        'USER': 'piunivesp',
-        'PASSWORD': '@projeto',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pesquisawos',
+#         'USER': 'piunivesp',
+#         'PASSWORD': '@projeto',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
