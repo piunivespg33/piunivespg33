@@ -28,8 +28,8 @@ SECRET_KEY = '^qn#!_nhf-ohbw=#x*!nuadv50g#3mgvj+e7f1&&0gtu4m85i5'
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['piunivespg33.herokuapp.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['piunivespg33.herokuapp.com']
 
 LOGIN_REDIRECT_URL = '/piunivespg33/'
 
@@ -98,11 +98,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'piunivespg33',
-#         'USER': 'piunivespg33',
-#         'PASSWORD': '@projetog33',
+#         'NAME': 'pesquisawos',
+#         'USER': 'piunivesp',
+#         'PASSWORD': '@projeto',
 #         'HOST': 'localhost',
-#         'PORT': '', # 8000 is default
+#         'PORT': '5432',
 #     }
 # }
 
