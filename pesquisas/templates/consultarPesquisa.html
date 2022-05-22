@@ -17,150 +17,34 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Publication Type</th>
-          <th scope="col">Authors</th>
-          <th scope="col">Book Authors</th>
-          <th scope="col">Book Editors</th>
-          <th scope="col">Book Group Authors</th>
-          <th scope="col">Author Full Names</th>
-          <th scope="col">Book Author Full Names</th>
-          <th scope="col">Group Authors</th>
-          <th scope="col">Article Title</th>
-          <th scope="col">Source Title</th>
-          <th scope="col">Book Series Title</th>
-          <th scope="col">Book Series Subtitle</th>
-          <th scope="col">Language</th>
-          <th scope="col">Document Type</th>
-          <th scope="col">Conference Title</th>
-          <th scope="col">Conference Date</th>
-          <th scope="col">Conference Location</th>
-          <th scope="col">Conference Sponsor</th>
-          <th scope="col">Conference Host</th>
-          <th scope="col">Author Keywords</th>
-          <th scope="col">Keywords Plus</th>
-          <th scope="col">Abstract</th>
-          <th scope="col">Addresses</th>
-          <th scope="col">Affiliations</th>
-          <th scope="col">Reprint Addresses</th>
-          <th scope="col">Email Addresses</th>
-          <th scope="col">Researcher Ids</th>
-          <th scope="col">ORCIDs</th>
-          <th scope="col">Funding Orgs</th>
-          <th scope="col">Funding Text</th>
-          <th scope="col">Cited References</th>
-          <th scope="col">Cited Reference Count</th>
-          <th scope="col">Times Cited WoS Core</th>
-          <th scope="col">Times Cited All Databases</th>
-          <th scope="col">180 Day Usage Count</th>
-          <th scope="col">Since 2013 Usage Count</th>
-          <th scope="col">Publisher</th>
-          <th scope="col">Publisher City</th>
-          <th scope="col">Publisher Address</th>
-          <th scope="col">ISSN</th>
-          <th scope="col">eISSN</th>
-          <th scope="col">ISBN</th>
-          <th scope="col">Journal Abbreviation</th>
-          <th scope="col">Journal ISO Abbreviation</th>
-          <th scope="col">Publication Date</th>
-          <th scope="col">Publication Year</th>
-          <th scope="col">Volume</th>
-          <th scope="col">Issue</th>
-          <th scope="col">Part Number</th>
-          <th scope="col">Supplement</th>
-          <th scope="col">Special Issue</th>
-          <th scope="col">Meeting Abstract</th>
-          <th scope="col">Start Page</th>
-          <th scope="col">End Page</th>
-          <th scope="col">Article Number</th>
-          <th scope="col">DOI</th>
-          <th scope="col">Book DOI</th>
-          <th scope="col">Early Access Date</th>
-          <th scope="col">Number of Pages</th>
-          <th scope="col">WoS Categories</th>
-          <th scope="col">Web of Science Index</th>
-          <th scope="col">Research Areas</th>
-          <th scope="col">IDS Number</th>
-          <th scope="col">Pubmed Id</th>
-          <th scope="col">Open Access Designations</th>
-          <th scope="col">Highly Cited Status</th>
-          <th scope="col">Hot Paper Status</th>
-          <th scope="col">Date of Export</th>
-          <th scope="col">UT Unique WOS ID</th>
+          <th scope="col">Autores</th>
+          <th scope="col">Título</th>
+          <th scope="col">Fonte do artigo</th>
+          <th scope="col">Palavras-chave</th>
+          <th scope="col">Resumo do artigo</th>
+          <th scope="col">Endereço dos Autores</th>
+          <th scope="col">Instituição de vínculo dos autores</th>
+          <th scope="col">Agência de Fomento</th>
+          <th scope="col">Contagem do número de citações</th>
+          <th scope="col">Ano da publicação</th>
+          <th scope="col">Áreas de pesquisa</th>
           <th scope="col">Edição</th>
         </tr>
       </thead>
       <tbody>
         {% for pesquisa in pesquisas %}
           <tr>
-            <td>{{ pesquisa.publication_type }}</td>
-            <td>{{ pesquisa.authors }}</td>
-            <td>{{ pesquisa.book_authors }}</td>
-            <td>{{ pesquisa.book_editors }}</td>
-            <td>{{ pesquisa.book_group_authors }}</td>
-            <td>{{ pesquisa.author_full_names }}</td>
-            <td>{{ pesquisa.book_author_full_names }}</td>
-            <td>{{ pesquisa.group_authors }}</td>
-            <td>{{ pesquisa.article_title }}</td>
-            <td>{{ pesquisa.source_title }}</td>
-            <td>{{ pesquisa.book_series_title }}</td>
-            <td>{{ pesquisa.book_series_subtitle }}</td>
-            <td>{{ pesquisa.language }}</td>
-            <td>{{ pesquisa.document_type }}</td>
-            <td>{{ pesquisa.conference_title }}</td>
-            <td>{{ pesquisa.conference_date }}</td>
-            <td>{{ pesquisa.conference_location }}</td>
-            <td>{{ pesquisa.conference_sponsor }}</td>
-            <td>{{ pesquisa.conference_host }}</td>
-            <td>{{ pesquisa.author_keywords }}</td>
-            <td>{{ pesquisa.keywords_plus }}</td>
-            <td>{{ pesquisa.abstract }}</td>
-            <td>{{ pesquisa.addresses }}</td>
-            <td>{{ pesquisa.affiliations }}</td>
-            <td>{{ pesquisa.reprint_addresses }}</td>
-            <td>{{ pesquisa.email_addresses }}</td>
-            <td>{{ pesquisa.researcher_ids }}</td>
-            <td>{{ pesquisa.orcids }}</td>
-            <td>{{ pesquisa.funding_orgs }}</td>
-            <td>{{ pesquisa.funding_text }}</td>
-            <td>{{ pesquisa.cited_references }}</td>
-            <td>{{ pesquisa.cited_reference_count }}</td>
-            <td>{{ pesquisa.times_cited_wos_core }}</td>
-            <td>{{ pesquisa.times_cited_all_databases }}</td>
-            <td>{{ pesquisa.day_usage_count }}</td>
-            <td>{{ pesquisa.since_2013_usage_count }}</td>
-            <td>{{ pesquisa.publisher }}</td>
-            <td>{{ pesquisa.publisher_city }}</td>
-            <td>{{ pesquisa.publisher_address }}</td>
-            <td>{{ pesquisa.issn }}</td>
-            <td>{{ pesquisa.eissn }}</td>
-            <td>{{ pesquisa.isbn }}</td>
-            <td>{{ pesquisa.journal_abbreviation }}</td>
-            <td>{{ pesquisa.journal_iso_abbreviation }}</td>
-            <td>{{ pesquisa.publication_date }}</td>
-            <td>{{ pesquisa.publication_year }}</td>
-            <td>{{ pesquisa.volume }}</td>
-            <td>{{ pesquisa.issue }}</td>
-            <td>{{ pesquisa.part_number }}</td>
-            <td>{{ pesquisa.supplement }}</td>
-            <td>{{ pesquisa.special_issue }}</td>
-            <td>{{ pesquisa.meeting_abstract }}</td>
-            <td>{{ pesquisa.start_page }}</td>
-            <td>{{ pesquisa.end_page }}</td>
-            <td>{{ pesquisa.article_number }}</td>
-            <td>{{ pesquisa.doi }}</td>
-            <td>{{ pesquisa.book_doi }}</td>
-            <td>{{ pesquisa.early_access_date }}</td>
-            <td>{{ pesquisa.number_of_pages }}</td>
-            <td>{{ pesquisa.wos_categories }}</td>
-            <td>{{ pesquisa.web_of_science_index }}</td>
-            <td>{{ pesquisa.research_areas }}</td>
-            <td>{{ pesquisa.ids_number }}</td>
-            <td>{{ pesquisa.pubmed_id }}</td>
-            <td>{{ pesquisa.open_access_designations }}</td>
-            <td>{{ pesquisa.highly_cited_status }}</td>
-            <td>{{ pesquisa.hot_paper_status }}</td>
-            <td>{{ pesquisa.date_of_export }}</td>
-            <td>{{ pesquisa.unique_wos_id }}</td>
+            <td>{{ pesquisa.autores }}</td>
+            <td>{{ pesquisa.titulo }}</td>
+            <td>{{ pesquisa.fonte_artigo }}</td>
+            <td>{{ pesquisa.palavras_chave }}</td>
+            <td>{{ pesquisa.resumo_artigo }}</td>
+            <td>{{ pesquisa.endereco_autores }}</td>
+            <td>{{ pesquisa.instituição_vinculo_autores }}</td>
+            <td>{{ pesquisa.agencia_fomento }}</td>
+            <td>{{ pesquisa.contagem_citacoes }}</td>
+            <td>{{ pesquisa.ano_publicacao }}</td>
+            <td>{{ pesquisa.areas_pesquisa }}</td>
             <td><a href="{% url 'deletarPesquisa' id=pesquisa.id %}" class="btn btn-danger">Deletar</a></td>
           </tr>
         {% endfor %}  

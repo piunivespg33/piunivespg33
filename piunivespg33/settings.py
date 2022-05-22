@@ -30,8 +30,8 @@ SECRET_KEY = '^qn#!_nhf-ohbw=#x*!nuadv50g#3mgvj+e7f1&&0gtu4m85i5'
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['piunivespg33.herokuapp.com']
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['piunivespg33.herokuapp.com']
 
 LOGIN_REDIRECT_URL = '/piunivespg33/'
 
