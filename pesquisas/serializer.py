@@ -7,9 +7,7 @@ class PesquisaFiltrosSerializer(serializers.Serializer):
 
     campo = serializers.CharField(required=True)
     valor = serializers.CharField(required=True)
-    tipo = serializers.ChoiceField(
-        choices=["istartswith", "iendswith", "contains"]
-    )
+    tipo = serializers.ChoiceField(choices=["istartswith", "iendswith", "contains"])
 
 
 class PesquisaPaginacaoSerializer(serializers.Serializer):

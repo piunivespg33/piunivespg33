@@ -93,10 +93,12 @@ class PesquisasApi(APIView):
         serializer_paginacao = PesquisaPaginacaoSerializer(data=request.data)
 
         if serializer_paginacao.is_valid():
-            pesquisas = filtrar_pesquisas(serializer_paginacao.data["filtros"])
+            pesquisas = filtrar_pesquisas(
+                user_id=request.user.id, filtros=serializer_paginacao.data["filtros"]
+            )
 
         else:
-            pesquisas = filtrar_pesquisas()
+            pesquisas = filtrar_pesquisas(user_id=request.user.id)
 
         por_pagina = serializer_paginacao.data["quantidade"]
 
