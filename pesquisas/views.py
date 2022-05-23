@@ -11,7 +11,7 @@ from rest_framework import status
 
 
 from pesquisas.models import Pesquisa
-from pesquisas.serializer import PesquisaFiltrosSerializer, PesquisaSerializar
+from pesquisas.serializer import PesquisaPaginacaoSerializer, PesquisaFiltrosSerializer, PesquisaSerializar
 from pesquisas.services import filtrar_pesquisas
 
 
@@ -89,35 +89,22 @@ class PesquisasApi(APIView):
 
     def post(self, request, format=None):
 
-        serializer = None
         pesquisas = None
 
-        if request.data:
-
-            serializer = PesquisaFiltrosSerializer(
-                data=request.data["filtros"], many=True
-            )
-
-            if serializer.is_valid():
-
-                pesquisas = filtrar_pesquisas(serializer.data)
-    
-            else:
-                pesquisas = filtrar_pesquisas()
+        serializer_paginacao = PesquisaPaginacaoSerializer(
+                data=request.data
+        )
+        
+        if serializer_paginacao.is_valid():
+            pesquisas = filtrar_pesquisas(serializer_paginacao.data["filtros"])
 
         else:
             pesquisas = filtrar_pesquisas()
 
-        try:
-            por_pagina = int(request.data["quantidade"])
-        except KeyError:
-            por_pagina = 25
+        por_pagina = serializer_paginacao.data["quantidade"]
 
-        try:
-            pagina = int(request.data["pagina"])
-            if pagina <= 0:
-                pagina = 1
-        except KeyError:        
+        pagina = serializer_paginacao.data["pagina"]
+        if pagina <= 0:
             pagina = 1
 
         paginacao = Paginator(pesquisas, por_pagina)
@@ -131,5 +118,5 @@ class PesquisasApi(APIView):
             "paginas": paginacao.num_pages,
             "pagina": pagina
         }
-        
+
         return Response(res_data, status=status.HTTP_200_OK)
