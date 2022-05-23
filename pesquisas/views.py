@@ -8,10 +8,12 @@ from django.urls import reverse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 
 from pesquisas.models import Pesquisa
 from pesquisas.serializer import PesquisaPaginacaoSerializer, PesquisaSerializar
+
 from pesquisas.services import filtrar_pesquisas
 
 
@@ -86,6 +88,7 @@ def melhoriasFuturas(request):
 
 
 class PesquisasApi(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request, format=None):
 
         pesquisas = None
