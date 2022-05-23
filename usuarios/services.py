@@ -1,15 +1,14 @@
 from django.contrib.auth.models import User
 
 
-class UserServices():
-
+class UserServices:
     @classmethod
     def create_user(cls, username: str, first_name: str, last_name: str, password: str):
         new_user = User(
             username=username,
             first_name=first_name,
             last_name=last_name,
-            password=password
+            password=password,
         )
 
         new_user.save()

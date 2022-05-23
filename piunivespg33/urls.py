@@ -18,9 +18,9 @@ from django.urls import path, include
 from usuarios.views import home
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', include('django.contrib.auth.urls'), name='login'),
-    path('', include('usuarios.urls')),
-    path('pesquisas/', include('pesquisas.urls')),
-    path('piunivespg33/', home),
+    path("admin/", admin.site.urls),
+    path("login/", include("django.contrib.auth.urls"), name="login"),
+    path("", include("usuarios.urls")),
+    path("", include("pesquisas.urls")),
+    path("piunivespg33/", home),
 ]

@@ -3,9 +3,9 @@ from pesquisas.models import Pesquisa
 from django.db.models import Q, QuerySet
 
 
-def filtrar_pesquisas(filtros: dict) -> List[QuerySet]:
+def filtrar_pesquisas(filtros: List[dict] = None) -> List[QuerySet]:
     """
-    Procura no banco de dados todas as Pesquisas conforme os filtros 
+    Procura no banco de dados todas as Pesquisas conforme os filtros
     especificados, seguindo o formato
     "Campo" : "valor" (Campo=valor)
     "Campo__istartswith": "Valor" (Campo LIKE 'Valor%')
@@ -17,5 +17,12 @@ def filtrar_pesquisas(filtros: dict) -> List[QuerySet]:
     :return: Lista de Pesquisas encontradas conforme o filtro
     :rtype: Queryset
     """
-    
-    return Pesquisa.objects.filter(Q(**filtros)).all()
+    query = Pesquisa.objects
+    if filtros:
+        filtros_dict = {}
+        for filtro in filtros:
+            filtros_dict[f"{filtro['campo']}__{filtro['tipo']}"] = filtro["valor"]
+
+        return Pesquisa.objects.filter(Q(**filtros_dict)).all()
+    else:
+        return query.all()

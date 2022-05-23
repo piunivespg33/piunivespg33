@@ -16,5 +16,6 @@ class Pesquisa(models.Model):
     areas_pesquisa = models.TextField(null=True, blank=True)
 
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE,
+        User,
+        on_delete=models.CASCADE,
     )

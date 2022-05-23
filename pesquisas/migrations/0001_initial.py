@@ -15,21 +15,38 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Pesquisa',
+            name="Pesquisa",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('autores', models.TextField(blank=True, null=True)),
-                ('titulo', models.TextField(blank=True, null=True)),
-                ('fonte_artigo', models.TextField(blank=True, null=True)),
-                ('palavras_chave', models.TextField(blank=True, null=True)),
-                ('resumo_artigo', models.TextField(blank=True, null=True)),
-                ('endereco_autores', models.TextField(blank=True, null=True)),
-                ('instituição_vinculo_autores', models.TextField(blank=True, null=True)),
-                ('agencia_fomento', models.TextField(blank=True, null=True)),
-                ('contagem_citacoes', models.IntegerField(blank=True, null=True)),
-                ('ano_publicacao', models.TextField(blank=True, null=True)),
-                ('areas_pesquisa', models.TextField(blank=True, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("autores", models.TextField(blank=True, null=True)),
+                ("titulo", models.TextField(blank=True, null=True)),
+                ("fonte_artigo", models.TextField(blank=True, null=True)),
+                ("palavras_chave", models.TextField(blank=True, null=True)),
+                ("resumo_artigo", models.TextField(blank=True, null=True)),
+                ("endereco_autores", models.TextField(blank=True, null=True)),
+                (
+                    "instituição_vinculo_autores",
+                    models.TextField(blank=True, null=True),
+                ),
+                ("agencia_fomento", models.TextField(blank=True, null=True)),
+                ("contagem_citacoes", models.IntegerField(blank=True, null=True)),
+                ("ano_publicacao", models.TextField(blank=True, null=True)),
+                ("areas_pesquisa", models.TextField(blank=True, null=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
