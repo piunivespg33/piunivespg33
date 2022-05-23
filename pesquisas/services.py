@@ -22,7 +22,6 @@ def filtrar_pesquisas(filtros: List[dict] = None) -> List[QuerySet]:
         filtros_dict = {}
         for filtro in filtros:
             filtros_dict[f"{filtro['campo']}__{filtro['tipo']}"] = filtro["valor"]
-
         return Pesquisa.objects.filter(Q(**filtros_dict)).all()
     else:
         return query.all()

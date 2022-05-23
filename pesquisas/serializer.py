@@ -1,4 +1,3 @@
-from email.policy import default
 from rest_framework import serializers
 
 from pesquisas.models import Pesquisa
@@ -20,7 +19,6 @@ class PesquisaPaginacaoSerializer(serializers.Serializer):
 
 
 class PesquisaSerializar(serializers.ModelSerializer):
-
     class Meta:
         model = Pesquisa
-        fields = '__all__'
+        fields = "__all__"
