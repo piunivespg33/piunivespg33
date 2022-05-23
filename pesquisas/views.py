@@ -1,7 +1,8 @@
 import csv
 import io
 
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.urls import reverse
 from rest_framework.views import APIView
@@ -107,6 +108,28 @@ class PesquisasApi(APIView):
         else:
             pesquisas = filtrar_pesquisas()
 
-        res_data = PesquisaSerializar(pesquisas, many=True)
+        try:
+            por_pagina = int(request.data["quantidade"])
+        except KeyError:
+            por_pagina = 25
+
+        try:
+            pagina = int(request.data["pagina"])
+            if pagina <= 0:
+                pagina = 1
+        except KeyError:        
+            pagina = 1
+
+        paginacao = Paginator(pesquisas, por_pagina)
+        registros = paginacao.get_page(pagina)
+
+        res_data = {
+            "registros": PesquisaSerializar(
+                registros.object_list, many=True
+            ).data,
+            "total": paginacao.count,
+            "paginas": paginacao.num_pages,
+            "pagina": pagina
+        }
         
-        return Response(res_data.data, status=status.HTTP_200_OK)
+        return Response(res_data, status=status.HTTP_200_OK)
