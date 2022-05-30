@@ -6,13 +6,18 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.urls import reverse
 from rest_framework.views import APIView
+from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
 
 from pesquisas.models import Pesquisa
-from pesquisas.serializer import PesquisaPaginacaoSerializer, PesquisaSerializar
+from pesquisas.serializer import (
+    PesquisaPaginacaoSerializer,
+    PesquisaSerializar,
+    UploadSerializer,
+)
 
 from pesquisas.services import filtrar_pesquisas
 
@@ -87,8 +92,23 @@ def melhoriasFuturas(request):
     return render(request, "melhoriasFuturas.html")
 
 
+class UploadViewSet(ViewSet):
+    serializer_class = UploadSerializer
+
+    def list(self, request):
+        return Response("GET API")
+
+    def create(self, request):
+        file_uploaded = request.FILES.get("file_uploaded")
+        content_type = file_uploaded.content_type
+        response = "POST API and you have uploaded a {} file".format(content_type)
+        return Response(response)
+
+
 class PesquisasApi(APIView):
+
     permission_classes = [IsAuthenticated]
+
     def post(self, request, format=None):
 
         pesquisas = None
@@ -115,6 +135,7 @@ class PesquisasApi(APIView):
         res_data = {
             "registros": PesquisaSerializar(registros.object_list, many=True).data,
             "total": paginacao.count,
+            "porPagina": por_pagina,
             "paginas": paginacao.num_pages,
             "pagina": pagina,
         }

@@ -17,4 +17,5 @@ urlpatterns = [
         "pesquisas/melhoriasFuturas/", views.melhoriasFuturas, name="melhoriasFuturas"
     ),
     path("api/pesquisas", views.PesquisasApi.as_view(), name="apiPequisa"),
+    # path("api/pesquisas/carregar", views.PesquisaCarregaDados.as_view(), name="apiPequisaCarregaDados"),
 ]

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.core.validators import FileExtensionValidator
 
 from pesquisas.models import Pesquisa
 
@@ -7,7 +8,7 @@ class PesquisaFiltrosSerializer(serializers.Serializer):
 
     campo = serializers.CharField(required=True)
     valor = serializers.CharField(required=True)
-    tipo = serializers.ChoiceField(choices=["istartswith", "iendswith", "contains"])
+    tipo = serializers.ChoiceField(choices=["istartswith", "iendswith", "icontains"])
 
 
 class PesquisaPaginacaoSerializer(serializers.Serializer):
@@ -19,4 +20,12 @@ class PesquisaPaginacaoSerializer(serializers.Serializer):
 class PesquisaSerializar(serializers.ModelSerializer):
     class Meta:
         model = Pesquisa
-        fields = "__all__"
+        exclude = ["user"]
+
+
+class UploadSerializer(serializers.Serializer):
+
+    file_uploaded = serializers.FileField()
+
+    class Meta:
+        fields = ["file_uploaded"]
