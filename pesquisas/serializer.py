@@ -23,9 +23,15 @@ class PesquisaSerializar(serializers.ModelSerializer):
         exclude = ["user"]
 
 
-class UploadSerializer(serializers.Serializer):
-
-    file_uploaded = serializers.FileField()
-
-    class Meta:
-        fields = ["file_uploaded"]
+class CSVSerializer(serializers.Serializer):
+    autores = serializers.CharField(allow_blank=True, allow_null=True)
+    titulo = serializers.CharField(allow_blank=True, allow_null=True)
+    fonte_artigo = serializers.CharField(allow_blank=True, allow_null=True)
+    palavras_chave = serializers.CharField(allow_blank=True, allow_null=True)
+    resumo_artigo = serializers.CharField(allow_blank=True, allow_null=True)
+    endereco_autores = serializers.CharField(allow_blank=True, allow_null=True)
+    instituição_vinculo_autores = serializers.CharField(allow_blank=True, allow_null=True)
+    agencia_fomento = serializers.CharField(allow_blank=True, allow_null=True)
+    contagem_citacoes = serializers.CharField(allow_blank=True, allow_null=True)
+    ano_publicacao = serializers.CharField(allow_blank=True, allow_null=True)
+    areas_pesquisa = serializers.CharField(allow_blank=True, allow_null=True)

@@ -1,3 +1,4 @@
+import base64
 import csv
 import io
 
@@ -14,9 +15,9 @@ from rest_framework.permissions import IsAuthenticated
 
 from pesquisas.models import Pesquisa
 from pesquisas.serializer import (
+    CSVSerializer,
     PesquisaPaginacaoSerializer,
     PesquisaSerializar,
-    UploadSerializer,
 )
 
 from pesquisas.services import filtrar_pesquisas
@@ -92,17 +93,33 @@ def melhoriasFuturas(request):
     return render(request, "melhoriasFuturas.html")
 
 
-class UploadViewSet(ViewSet):
-    serializer_class = UploadSerializer
+class CarregaPesquisaApi(APIView):
 
-    def list(self, request):
-        return Response("GET API")
+    permission_classes = [IsAuthenticated]
 
-    def create(self, request):
-        file_uploaded = request.FILES.get("file_uploaded")
-        content_type = file_uploaded.content_type
-        response = "POST API and you have uploaded a {} file".format(content_type)
-        return Response(response)
+    def post(self, request, format=None):
+        serializer = CSVSerializer(data=request.data)
+
+        if serializer.is_valid():
+            # Gerando uma list comprehension
+            try:
+                dados = serializer.data
+                dados["user_id"] = request.user.id
+                registro = Pesquisa(**dados)
+                registro.save()
+
+                return Response({}, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                print(e)
+                return Response(
+                    {"erro": "Erro ao salvar o registro"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class PesquisasApi(APIView):
