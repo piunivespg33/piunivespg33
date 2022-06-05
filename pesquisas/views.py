@@ -124,3 +124,20 @@ class PesquisasApi(APIView):
         }
 
         return Response(res_data, status=status.HTTP_200_OK)
+
+
+class PesquisaApi(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, id_pesquisa, format=None):
+        if (id_pesquisa > 0):
+            try:
+                p = Pesquisa.objects.get(pk=id_pesquisa)
+                p.delete()
+                return Response(status=status.HTTP_200_OK)
+
+            except Pesquisa.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response({"error": "ID inválido"}, status=status.HTTP_400_NOT_FOUND)
