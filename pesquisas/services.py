@@ -20,13 +20,12 @@ def filtrar_pesquisas(user_id: int, filtros: List[dict] = None) -> List[QuerySet
     """
     query = Pesquisa.objects
     if filtros:
-        filtros_dict = {}
+        ttl = Q(user_id=user_id)
         for filtro in filtros:
             for field in Pesquisa._meta.get_fields():
                 if field.name == filtro["campo"]:
-                    filtros_dict[f"{filtro['campo']}__{filtro['tipo']}"] = filtro[
-                        "valor"
-                    ]
-        return Pesquisa.objects.filter(Q(**filtros_dict)).filter(user_id=user_id).all()
+                    ttl &= Q(**{f"{filtro['campo']}__{filtro['tipo']}": filtro["valor"]})
+        return Pesquisa.objects.filter(ttl).order_by('id').all()
+
     else:
         return query.filter(user_id=user_id).all()
