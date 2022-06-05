@@ -3,11 +3,10 @@ from django.contrib.auth.models import User
 
 class UserServices:
     @classmethod
-    def create_user(cls, username: str, first_name: str, last_name: str, password: str):
-        new_user = User(
+    def create_user(cls, username: str, email: str, password: str):
+        new_user = User.objects.create_user(
             username=username,
-            first_name=first_name,
-            last_name=last_name,
+            email=email,
             password=password,
         )
 
@@ -15,6 +14,5 @@ class UserServices:
 
         return {
             "username": username,
-            "first_name": first_name,
-            "last_name": last_name,
+            "email": email
         }

@@ -59,40 +59,6 @@ def save_data(data, request):
         aux.append(obj)
     Pesquisa.objects.bulk_create(aux)
 
-
-def cadastrarPesquisa(request):
-    if request.method == "POST" and request.FILES["myfile"]:
-        myfile = request.FILES["myfile"]
-        # Lendo arquivo InMemoryUploadedFile
-        file = myfile.read().decode("utf-8")
-        reader = csv.DictReader(io.StringIO(file))
-        # Gerando uma list comprehension
-        data = [line for line in reader]
-        save_data(data, request)
-        return HttpResponseRedirect(reverse("consultarPesquisa"))
-
-    template_name = "cadastrarPesquisa.html"
-    return render(request, template_name)
-
-
-def consultarPesquisa(request):
-    pesquisas = Pesquisa.objects.all()
-    context = {"pesquisas": pesquisas}
-    return render(request, "consultarPesquisa.html", context)
-
-
-def deletarPesquisa(request, id):
-    pesquisa = Pesquisa.objects.get(id=id)
-    pesquisa.delete()
-    pesquisas = Pesquisa.objects.all()
-    context = {"pesquisas": pesquisas}
-    return render(request, "consultarPesquisa.html", context)
-
-
-def melhoriasFuturas(request):
-    return render(request, "melhoriasFuturas.html")
-
-
 class CarregaPesquisaApi(APIView):
 
     permission_classes = [IsAuthenticated]
