@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Projeto Integrador PI III - Pesquisas</title>
+{% endblock head %}
+
+
+{% block content %}
+<main>
+    <div id="content-area">
+      <div class="container">
+          <div class="row">
+            <div class="col-12"> 
+              <h3 class="title-pesquisa">Pesquisas</h3>
+            </div>
+            <div class="col-md-12">
+                <p><a href="{% url 'pesquisas:pesquisaCadastrar' %}">pesquisaCadastrar</a></p>
+                <p><a href="{% url 'pesquisas:pesquisaListar' %}">pesquisaListar</a></p>
+                <p><a href="{% url 'pesquisas:pesquisaGrafico' %}">pesquisaGrafico</a></p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</main>
+{% endblock content %}

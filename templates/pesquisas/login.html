@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PI WoS Login</title>  
+  <link rel="stylesheet" href="{% static 'css/login-styles.css' %}">
+</head>
+<body background="{% static 'img/webofsciencelogin.jpg' %}">
+  <div id="login-container">
+    <h1>Login</h1>
+    <form action="">
+      <label for="email">E-mail</label>
+      <input type="email" name="email" id="email" placeholder="Digite seu e-email" autocomplete="off" autofocus>
+      <label for="password">Senha</label>
+      <input type="password" name="password" id="password" placeholder="Digite sua senha">
+      <a href="#" id="forgot-pass">Esqueceu a senha?</a>
+      <input type="submit" value="Login">
+    </form>
+    <div id="register-container">
+      <p>Ainda não tem uma conta?</p>
+      <a href="#">Registrar</a>
+      <a href="{% url 'pesquisas:home' %}">Home</a>      
+    </div>
+  </div>
+</body>
+</html>
